@@ -1,0 +1,9 @@
+venv/
+rasa_env/
+__pycache__/
+*.pyc
+.env
+eirene_memory.db
+chromadb/
+models/
+*.sqlite3
