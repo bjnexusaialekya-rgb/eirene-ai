@@ -1,3 +1,5 @@
+import uuid
+
 import chromadb
 
 from app.vector_memory.embedding_engine import EmbeddingEngine
@@ -10,7 +12,6 @@ class ChromaMemory:
         self.client = chromadb.Client()
 
         self.collection = self.client.get_or_create_collection(
-
             name="eirene_memory"
         )
 
@@ -20,10 +21,10 @@ class ChromaMemory:
 
         self,
 
-        memory_id,
-
         text
     ):
+
+        memory_id = str(uuid.uuid4())
 
         embedding = self.embedding_engine.create_embedding(
             text
@@ -58,7 +59,13 @@ class ChromaMemory:
             n_results=top_k
         )
 
-        return results
+        documents = results.get("documents", [])
+
+        if documents and len(documents) > 0:
+
+            return documents[0]
+
+        return []
 
 
 if __name__ == "__main__":
@@ -66,16 +73,11 @@ if __name__ == "__main__":
     chroma = ChromaMemory()
 
     chroma.store_memory(
-
-        memory_id="1",
-
-        text="I feel emotionally exhausted and anxious."
+        "I feel emotionally exhausted and anxious."
     )
 
     result = chroma.retrieve_memories(
-
         "I feel stressed and overwhelmed."
     )
 
     print(result)
-    

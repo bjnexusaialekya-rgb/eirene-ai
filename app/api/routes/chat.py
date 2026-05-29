@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
 
+from app.schemas.chat_schema import ChatRequest
 from app.core.orchestrator import EireneOrchestrator
 
 
@@ -9,16 +9,10 @@ router = APIRouter()
 eirene = EireneOrchestrator()
 
 
-class ChatRequest(BaseModel):
-
-    message: str
-
-
 @router.post("/chat")
-
 def chat(request: ChatRequest):
 
-    result = eirene.process_user_message(
+    result = eirene.process_message(
         request.message
     )
 

@@ -1,0 +1,53 @@
+{
+  "text": {
+    "hi": 16,
+    "hello": 14,
+    "hey": 15,
+    "good": 11,
+    "morning": 19,
+    "i": 17,
+    "feel": 10,
+    "emotionally": 8,
+    "exhausted": 9,
+    "anxious": 2,
+    "am": 1,
+    "stressed": 23,
+    "lonely": 18,
+    "happy": 13,
+    "today": 25,
+    "need": 20,
+    "emotional": 7,
+    "support": 24,
+    "overwhelmed": 22,
+    "depressed": 5,
+    "had": 12,
+    "a": 0,
+    "difficult": 6,
+    "day": 4,
+    "burned": 3,
+    "out": 21
+  },
+  "intent": {
+    "greet": 1,
+    "eirene_chat": 0
+  },
+  "response": null,
+  "action_name": {
+    "action_listen": 7,
+    "action_restart": 8,
+    "action_session_start": 10,
+    "action_default_fallback": 4,
+    "action_deactivate_loop": 1,
+    "action_revert_fallback_events": 9,
+    "action_default_ask_affirmation": 2,
+    "action_default_ask_rephrase": 3,
+    "action_two_stage_fallback": 11,
+    "action_unlikely_intent": 12,
+    "action_back": 0,
+    "action_extract_slots": 6,
+    "action_eirene_response": 5,
+    "utter_greet": 13
+  },
+  "action_text": null,
+  "intent_response_key": null
+}

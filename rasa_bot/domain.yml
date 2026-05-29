@@ -2,32 +2,27 @@ version: "3.1"
 
 intents:
   - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
   - mood_unhappy
+  - mood_great
   - bot_challenge
+  - eirene_chat
 
 responses:
+
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hello. I'm Eirene AI."
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "I'm here with you."
 
   utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
+    - text: "That’s wonderful to hear."
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am Eirene AI."
+
+actions:
+  - action_eirene_response
 
 session_config:
   session_expiration_time: 60

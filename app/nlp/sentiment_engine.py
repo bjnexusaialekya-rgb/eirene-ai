@@ -19,6 +19,20 @@ class SentimentEngine:
             "score": result[0]["score"]
         }
 
+    def detect_emotion(self, text: str):
+
+        sentiment = self.analyze_sentiment(text)
+
+        label = sentiment["label"]
+
+        if label == "NEGATIVE":
+            return "sad"
+
+        if label == "POSITIVE":
+            return "happy"
+
+        return "neutral"
+
 
 if __name__ == "__main__":
 
@@ -26,6 +40,6 @@ if __name__ == "__main__":
 
     sample = "I feel stressed and emotionally overwhelmed."
 
-    output = engine.analyze_sentiment(sample)
+    output = engine.detect_emotion(sample)
 
     print(output)
