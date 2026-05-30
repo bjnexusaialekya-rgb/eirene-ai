@@ -23,6 +23,29 @@ class OpenAIConnector:
             api_key=api_key
         )
 
+    def ask(
+        self,
+        prompt: str,
+        system_prompt: str = "You are a helpful AI assistant."
+    ):
+
+        response = self.client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.3
+        )
+
+        return response.choices[0].message.content
+
     def qualify_lead(
         self,
         lead_text: str
@@ -50,19 +73,7 @@ Recommended Action:
 <next action>
 """
 
-        response = self.client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are an expert sales qualification assistant."
-                },
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ],
-            temperature=0.3
+        return self.ask(
+            prompt,
+            "You are an expert sales qualification assistant."
         )
-
-        return response.choices[0].message.content

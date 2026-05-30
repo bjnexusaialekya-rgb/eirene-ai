@@ -1,14 +1,26 @@
+
 from datetime import datetime
+import json
 
 
 class WorkflowLogger:
 
     @staticmethod
-    def log(event: str, details: str = ""):
-        timestamp = datetime.utcnow().isoformat()
+    def log(
+        workflow_id: str,
+        workflow_name: str,
+        event: str,
+        status: str,
+        details: dict | None = None
+    ):
 
-        print(
-            f"[{timestamp}] "
-            f"{event} "
-            f"{details}"
-        )
+        payload = {
+            "timestamp": datetime.utcnow().isoformat(),
+            "workflow_id": workflow_id,
+            "workflow_name": workflow_name,
+            "event": event,
+            "status": status,
+            "details": details or {}
+        }
+
+        print(json.dumps(payload, indent=2))
